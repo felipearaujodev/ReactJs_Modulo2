@@ -6,10 +6,10 @@ const Title = styled.h1`
   font-size: 32px;
 `;
 
-const App = () => {
+const App = () => (
   <div className="App">
     <Title>Hello Word</Title>
-  </div>;
-};
+  </div>
+);
 
 export default App;
