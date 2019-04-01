@@ -3,10 +3,20 @@ import PropTypes from "prop-types";
 
 import { Container, Repository } from "./styles";
 
-const CompareList = props => (
+const CompareList = ({ repositories, removeItem, updateItem }) => (
   <Container>
-    {props.repositories.map(repository => (
+    {repositories.map(repository => (
       <Repository key={repository.id}>
+        <div className="buttons-container">
+          <button type="button" onClick={() => updateItem(repository.id)}>
+            <i className="fa fa-retweet" />
+            Atualizar
+          </button>
+          <button type="button" onClick={() => removeItem(repository.id)}>
+            <i className="fa fa-trash" />
+            Excluir
+          </button>
+        </div>
         <header>
           <img src={repository.owner.avatar_url} alt={repository.owner.login} />
           <strong>{repository.name}</strong>
@@ -16,19 +26,19 @@ const CompareList = props => (
         <ul>
           <li>
             {repository.stargazers_count}
-            <small>stars</small>
+            <small> stars</small>
           </li>
           <li>
             {repository.forks_count}
-            <small>forks</small>
+            <small> forks</small>
           </li>
           <li>
             {repository.open_issues_count}
-            <small>issues</small>
+            <small> issues</small>
           </li>
           <li>
             {repository.lastCommit}
-            <small>last commit</small>
+            <small> last commit</small>
           </li>
         </ul>
       </Repository>
